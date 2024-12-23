@@ -6,10 +6,10 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-export function CardProduct(product) {
-
+export function CardProduct({ product, onClickFavorite }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -29,8 +29,9 @@ export function CardProduct(product) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+        <IconButton onClick={() => onClickFavorite(product.id)
+        } aria-label="add to favorites">
+          {product.favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
 
         <IconButton aria-label="share">
