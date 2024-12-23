@@ -1,6 +1,10 @@
 #root {
-  max-width: 1280px;
+  width: 100hw;
+  box-sizing: border-box;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+}
+.container {
+  padding: 0.4em;
+  overflow: hidden;
+  /* margin: 1em auto; */
 }
