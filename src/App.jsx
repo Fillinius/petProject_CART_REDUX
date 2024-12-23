@@ -6,6 +6,8 @@ import './App.css'
 
 function App() {
   const [products, setProducts] = useState(initialData)
+  console.log(products);
+
   const cardCount = products.filter(products => products.count > 0)
 
   const handleClickFavorite = useCallback((id) => {
@@ -19,11 +21,21 @@ function App() {
     }))
   }, [products])
 
+  const handleClickCart = useCallback((id) => {
+    setProducts(
+      products.map(product => {
+        if (product.id === id) product.count += 1
+        return product
+      })
+
+    )
+  }, [products])
+
   return (
     <>
       <div className="container">
         <NavBar cardCount={cardCount} />
-        <StoreCard products={products} onClickFavorite={handleClickFavorite} />
+        <StoreCard products={products} onClickFavorite={handleClickFavorite} onClickCart={handleClickCart} />
       </div>
     </>
   )

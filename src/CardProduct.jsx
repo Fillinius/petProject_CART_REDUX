@@ -11,7 +11,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { memo } from 'react';
 
 // eslint-disable-next-line react/display-name
-export const CardProduct = memo(({ product, onClickFavorite }) => {
+export const CardProduct = memo(({ product, onClickFavorite, onClickCart }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -36,7 +36,7 @@ export const CardProduct = memo(({ product, onClickFavorite }) => {
           {product.favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
 
-        <IconButton aria-label="share">
+        <IconButton onClick={() => onClickCart(product.id)} aria-label="share">
           <AddShoppingCartIcon aria-label="cart" />
         </IconButton>
 

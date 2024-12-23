@@ -4,7 +4,7 @@ import { CardProduct } from "./CardProduct"
 
 
 // eslint-disable-next-line react/prop-types
-export function StoreCard({ products, onClickFavorite }) {
+export function StoreCard({ products, onClickFavorite, onClickCart }) {
   if (!products) return "List is empty"
 
   return (
@@ -13,7 +13,7 @@ export function StoreCard({ products, onClickFavorite }) {
 
         {products.map(product => (
           <Grid2 item xs={6} key={product.id} style={{ margin: 'auto' }}>
-            <CardProduct product={{ ...product }} onClickFavorite={onClickFavorite} />
+            <CardProduct product={{ ...product }} onClickFavorite={onClickFavorite} onClickCart={onClickCart} />
           </Grid2>
         ))}
 
