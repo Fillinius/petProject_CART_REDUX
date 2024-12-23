@@ -8,8 +8,10 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { memo } from 'react';
 
-export function CardProduct({ product, onClickFavorite }) {
+// eslint-disable-next-line react/display-name
+export const CardProduct = memo(({ product, onClickFavorite }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -43,3 +45,4 @@ export function CardProduct({ product, onClickFavorite }) {
     </Card>
   );
 }
+)

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { initialData } from "./InitialData"
 import { NavBar } from './assets/NavBar'
 import { StoreCard } from './StoreCard'
@@ -8,7 +8,7 @@ function App() {
   const [products, setProducts] = useState(initialData)
   const cardCount = products.filter(products => products.count > 0)
 
-  const handleClickFavorite = (id) => {
+  const handleClickFavorite = useCallback((id) => {
     setProducts(products.map(product => {
       if (product.id === id)
         return {
@@ -17,7 +17,7 @@ function App() {
         }
       else { return product }
     }))
-  }
+  }, [products])
 
   return (
     <>
