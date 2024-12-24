@@ -3,12 +3,12 @@ import { initialData } from "./InitialData"
 import { NavBar } from './assets/NavBar'
 import { StoreCard } from './StoreCard'
 import './App.css'
+import { Cart } from "./Cart"
 
 function App() {
   const [products, setProducts] = useState(initialData)
-  console.log(products);
 
-  const cardCount = products.filter(products => products.count > 0)
+  const cartCount = products.filter(products => products.count > 0)
 
   const handleClickFavorite = useCallback((id) => {
     setProducts(products.map(product => {
@@ -24,7 +24,23 @@ function App() {
   const handleClickCart = useCallback((id) => {
     setProducts(
       products.map(product => {
-        if (product.id === id) product.count += 1
+        if (product.id === id) return {
+          ...product,
+          count: product.count += 1
+        }
+        return product
+      })
+
+    )
+  }, [products])
+
+  const handleClickCartMinus = useCallback((id) => {
+    setProducts(
+      products.map(product => {
+        if (product.id === id) return {
+          ...product,
+          count: product.count -= 1
+        }
         return product
       })
 
@@ -34,8 +50,9 @@ function App() {
   return (
     <>
       <div className="container">
-        <NavBar cardCount={cardCount} />
+        <NavBar cartCount={cartCount} />
         <StoreCard products={products} onClickFavorite={handleClickFavorite} onClickCart={handleClickCart} />
+        <Cart cartCount={cartCount} onClickPlus={handleClickCart} onClickMinus={handleClickCartMinus} />
       </div>
     </>
   )

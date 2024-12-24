@@ -8,8 +8,8 @@ import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantity
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 // eslint-disable-next-line react/prop-types
-export function NavBar({ cardCount }) {
-  if (!cardCount) return "Somethig twrong"
+export function NavBar({ cartCount }) {
+  if (!cartCount) return "Somethig twrong"
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -19,7 +19,7 @@ export function NavBar({ cardCount }) {
             Store
           </Typography>
           <Button color="inherit">
-            {cardCount.length > 0 ? <ShoppingCartCheckoutIcon /> : <ProductionQuantityLimitsIcon />}
+            {cartCount.length > 0 ? <ShoppingCartCheckoutIcon /> : <ProductionQuantityLimitsIcon />}
           </Button>
         </Toolbar>
       </AppBar>
