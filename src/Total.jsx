@@ -1,9 +1,10 @@
-import { memo, useContext } from "react";
-import { DataContext } from "./context/context";
+import { memo } from "react";
+import { useSelector } from "react-redux";
 
 // eslint-disable-next-line react/display-name
 export const Total = memo(() => {
-  const { cartCount } = useContext(DataContext)
+  const store = useSelector(state => state.products)
+  const cartCount = store.filter((products) => products.count > 0)
   if (!cartCount || !Array.isArray(cartCount)) return 'Someting trwong'
 
   const total = cartCount.reduce((acc, item) =>

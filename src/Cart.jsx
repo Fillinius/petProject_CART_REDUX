@@ -1,12 +1,12 @@
 import { Container, List } from "@mui/material";
 import { Total } from "./Total";
 import { OptionListCard } from "./OptionListCard";
-import { DataContext } from "./context/context";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 // eslint-disable-next-line react/display-name
 export function Cart() {
-  const { cartCount } = useContext(DataContext)
+  const store = useSelector(state => state.products)
+  const cartCount = store.filter((products) => products.count > 0)
 
   if (!cartCount || !Array.isArray(cartCount)) return "Something twrong!"
   if (cartCount.length === 0) return " Ваш список покупок пока пуст!"

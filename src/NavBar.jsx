@@ -6,12 +6,12 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits'
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-import { useContext } from 'react'
-import { DataContext } from './context/context'
+import { useSelector } from 'react-redux'
 
 // eslint-disable-next-line react/prop-types
 export function NavBar() {
-  const { cartCount } = useContext(DataContext)
+  const store = useSelector(state => state.products)
+  const cartCount = store.filter((products) => products.count > 0)
 
   if (!cartCount) return "Somethig twrong"
 

@@ -2,18 +2,19 @@ import { NavBar } from './NavBar'
 import { StoreCard } from './StoreCard'
 import './App.css'
 import { Cart } from "./Cart"
-import { DataContextProvider } from './context/context'
+import { Provider } from "react-redux"
+import { store } from './redux/store'
 
 function App() {
 
   return (
     <>
       <div className="container">
-        <DataContextProvider>
+        <Provider store={store}>
           <NavBar />
           <StoreCard />
           <Cart />
-        </DataContextProvider>
+        </Provider>
       </div>
     </>
   )

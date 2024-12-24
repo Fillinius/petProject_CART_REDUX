@@ -1,13 +1,11 @@
 
 import { Grid2 } from "@mui/material"
 import { CardProduct } from "./CardProduct"
-import { useContext } from "react"
-import { DataContext } from "./context/context"
-
+import { useSelector } from "react-redux"
 
 // eslint-disable-next-line react/prop-types
 export function StoreCard() {
-  const { products } = useContext(DataContext)
+  const products = useSelector(state => state.products)
   if (!products) return "List is empty"
 
   return (

@@ -8,19 +8,18 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { memo, useContext } from 'react';
-import { DataContext } from './context/context';
+import { memo } from 'react';
+import { useDispatch } from 'react-redux';
+import { favoriteCreater, incrementCountCreater } from './redux/action';
 
 // eslint-disable-next-line react/display-name
 export const CardProduct = memo((product) => {
-  const { handleClickFavorite, handleClickCart } = useContext(DataContext)
+  const dispatch = useDispatch()
 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
-
         title={product.title}
-
       />
       <CardMedia
         component="img"
@@ -34,12 +33,11 @@ export const CardProduct = memo((product) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton onClick={() => handleClickFavorite(product.id)
-        } aria-label="add to favorites">
+        <IconButton onClick={() => dispatch(favoriteCreater(product.id))} aria-label="add to favorites">
           {product.favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
 
-        <IconButton onClick={() => handleClickCart(product.id)} aria-label="share">
+        <IconButton onClick={() => dispatch(incrementCountCreater(product.id))} aria-label="share">
           <AddShoppingCartIcon aria-label="cart" />
         </IconButton>
 
