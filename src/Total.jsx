@@ -1,7 +1,9 @@
-import { memo } from "react";
+import { memo, useContext } from "react";
+import { DataContext } from "./context/context";
 
 // eslint-disable-next-line react/display-name
-export const Total = memo(({ cartCount }) => {
+export const Total = memo(() => {
+  const { cartCount } = useContext(DataContext)
   if (!cartCount || !Array.isArray(cartCount)) return 'Someting trwong'
 
   const total = cartCount.reduce((acc, item) =>

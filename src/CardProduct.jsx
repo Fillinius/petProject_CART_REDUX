@@ -8,10 +8,13 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { memo } from 'react';
+import { memo, useContext } from 'react';
+import { DataContext } from './context/context';
 
 // eslint-disable-next-line react/display-name
-export const CardProduct = memo(({ product, onClickFavorite, onClickCart }) => {
+export const CardProduct = memo((product) => {
+  const { handleClickFavorite, handleClickCart } = useContext(DataContext)
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -31,12 +34,12 @@ export const CardProduct = memo(({ product, onClickFavorite, onClickCart }) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton onClick={() => onClickFavorite(product.id)
+        <IconButton onClick={() => handleClickFavorite(product.id)
         } aria-label="add to favorites">
           {product.favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
 
-        <IconButton onClick={() => onClickCart(product.id)} aria-label="share">
+        <IconButton onClick={() => handleClickCart(product.id)} aria-label="share">
           <AddShoppingCartIcon aria-label="cart" />
         </IconButton>
 

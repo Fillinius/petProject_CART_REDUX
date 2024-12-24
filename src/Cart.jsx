@@ -1,22 +1,26 @@
 import { Container, List } from "@mui/material";
 import { Total } from "./Total";
 import { OptionListCard } from "./OptionListCard";
+import { DataContext } from "./context/context";
+import { useContext } from "react";
 
 // eslint-disable-next-line react/display-name
-export function Cart(props) {
-  if (!props.cartCount || !Array.isArray(props.cartCount)) return "Something twrong!"
-  if (props.cartCount.length === 0) return " Ваш список покупок пока пуст!"
+export function Cart() {
+  const { cartCount } = useContext(DataContext)
+
+  if (!cartCount || !Array.isArray(cartCount)) return "Something twrong!"
+  if (cartCount.length === 0) return " Ваш список покупок пока пуст!"
   return (
     <Container maxWidth="sm" style={{ border: "2px solid grey", marginTop: '10px' }}>
-      {props.cartCount.length > 0 && <List>
-        {props.cartCount.map(item => (
+      {cartCount.length > 0 && <List>
+        {cartCount.map(item => (
 
-          <li key={item.id} ><OptionListCard item={item} props={props} /></li>
+          <li key={item.id} ><OptionListCard item={item} /></li>
 
         ))}
       </List>}
       <hr />
-      <Total cartCount={props.cartCount} />
+      <Total />
     </Container>
   )
 
