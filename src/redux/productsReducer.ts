@@ -1,6 +1,7 @@
 import { initialData } from '../initialData'
+import { ProjectAction } from './action'
 
-export function productsReducer(state = initialData, action) {
+export function productsReducer(state = initialData, action: ProjectAction) {
   switch (action.type) {
     case 'FAVORITEPRODUCT':
       return state.map((product) => {

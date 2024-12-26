@@ -1,18 +1,18 @@
-import { memo } from "react";
-import { useSelector } from "react-redux";
+import { memo } from 'react'
+import { useAppSelector } from './redux/hooks'
 
 // eslint-disable-next-line react/display-name
 export const Total = memo(() => {
-  const store = useSelector(state => state.products)
+  const store = useAppSelector((state) => state.products)
   const cartCount = store.filter((products) => products.count > 0)
   if (!cartCount || !Array.isArray(cartCount)) return 'Someting trwong'
 
-  const total = cartCount.reduce((acc, item) =>
+  const total = cartCount.reduce(
+    (acc, item) => acc + item.count * item.price,
 
-    (acc + (item.count * item.price))
-
-    , 0)
-  if (!total) return "error"
+    0
+  )
+  if (!total) return 'error'
   return (
     <>
       <h3>Полная стоимость покупки - {total} $</h3>
