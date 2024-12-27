@@ -3,7 +3,7 @@
 Базовая настройка Vite и TypeScript
 Проект написан для закрепления навыков по таким технологиям как
 - Vite
-- TypeScript
+- TypeScript  (выполнен переход с JavaScript)
 - Context
 - Redux (включая middleware)
 - оболочка MaterialUI и немного CSS
