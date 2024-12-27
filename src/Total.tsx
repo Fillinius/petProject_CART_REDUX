@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { useAppSelector } from './redux/hooks'
+import BasicModal from './modal/basicModal'
 
 // eslint-disable-next-line react/display-name
 export const Total = memo(() => {
@@ -16,6 +17,7 @@ export const Total = memo(() => {
   return (
     <>
       <h3>Полная стоимость покупки - {total} $</h3>
+      <BasicModal />
     </>
   )
 })
