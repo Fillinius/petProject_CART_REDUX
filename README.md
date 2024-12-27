@@ -5,7 +5,7 @@
 - Vite
 - TypeScript  (выполнен переход с JavaScript)
 - Context
-- Redux (включая middleware)
+- Redux (включая middleware и Persist (хранение состояния в localstorage))
 - оболочка MaterialUI и немного CSS
 
 Постепенный переход от хранения состояния useState  далее Context далее Redux
