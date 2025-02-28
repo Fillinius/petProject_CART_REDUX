@@ -1,3 +1,12 @@
+export interface InitialDataProp {
+  img: string
+  title: string
+  id: string
+  price: number
+  count: number
+  favorite: boolean
+}
+
 export const initialData = [
   {
     img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
