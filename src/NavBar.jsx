@@ -6,9 +6,13 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits'
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import { useContext } from 'react'
+import { DataContext } from './context/context'
 
 // eslint-disable-next-line react/prop-types
-export function NavBar({ cartCount }) {
+export function NavBar() {
+  const { cartCount } = useContext(DataContext)
+
   if (!cartCount) return "Somethig twrong"
 
   return (
